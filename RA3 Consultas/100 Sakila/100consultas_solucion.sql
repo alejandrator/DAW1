@@ -2,15 +2,24 @@
 -- SECCIÓN A) 30 CONSULTAS CON JOIN DE 2 TABLAS
 -- ==============================================
 -- 1:  Para cada actor, muestra el número total de películas en las que aparece; es decir, cuenta cuántas filas de film_actor corresponden a cada actor.
-SELECT  first_name AS nombre_actor, last_name AS apellido
+SELECT actor_id AS actores, COUNT(film_id) AS num_peliculas
 FROM actor 
-	JOIN film_actor USING (actor_id);
-
+	JOIN film_actor USING (actor_id)
+GROUP BY actor_id;
 
 -- 2:  Lista solo los actores que participan en 20 o más películas (umbral alto) con su conteo.
-
+SELECT actor_id AS actores, COUNT(title)
+FROM actor 
+	JOIN film_actor USING (actor_id)
+    JOIN film USING (film_id)
+WHERE title > 20
+GROUP BY actor_id;
 
 -- 3:  Para cada idioma, indica cuántas películas están catalogadas en ese idioma.
+SELECT *
+FROM languaje
+	JOIN film USING (languaje_id)
+
 -- 4:  Muestra el promedio de duración (length) de las películas por idioma y filtra aquellos idiomas con duración media estrictamente mayor a 110 minutos.
 -- 5:  Para cada película, muestra cuántas copias hay en el inventario.
 -- 6:  Lista solo las películas que tienen al menos 5 copias en inventario.
