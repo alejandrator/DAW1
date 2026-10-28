@@ -2,8 +2,7 @@
 -- SECCIÓN A) 30 CONSULTAS CON JOIN DE 2 TABLAS
 -- ==============================================
 -- 1:  Para cada actor, muestra el número total de películas en las que aparece; es decir, cuenta cuántas filas de film_actor corresponden a cada actor.
-SELECT  first_name) AS nombre_actor, CT last_name) AS apellido
-
+SELECT  first_name AS nombre_actor, last_name AS apellido
 FROM actor 
 	JOIN film_actor USING (actor_id);
 
